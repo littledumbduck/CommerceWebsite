@@ -3,44 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freddy AR - Edición Especial</title>
+    <title>Freddy AR - Tienda Oficial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="nav-container">
+            <div class="menu-burger"><i class="fas fa-bars"></i></div>
             <div class="logo">FREDDY<span>AR</span></div>
+            <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
         </nav>
     </header>
 
-    <main class="product-container">
-        <section class="product-image">
-            <div class="image-placeholder">
-                <img src="images/freddy.png" alt="Freddy Fazbear Funko Pop" class="main-funko">
-            </div>
-        </section>
+    <main class="main-content">
+        <article class="product-container">
+            <section class="product-image">
+                <div class="image-wrapper">
+                    <img src="images/freddy.png" alt="Freddy Fazbear Funko Pop Edición AR" class="main-funko">
+                </div>
+            </section>
 
-        <section class="product-info">
-            <h1>Freddy Fazbear Funko Pop</h1>
-            <p class="edition">Edición Limitada de Realidad Aumentada</p>
-            <p class="description">
-                Llévate a casa el animatrónico más famoso. Esta figura exclusiva es compatible 
-                con nuestra aplicación de realidad aumentada creada en Unity. 
-                ¡Escanea la base y mira cómo cobra vida en tu habitación!
-            </p>
-            
-            <div class="price-box">
-                <span class="price">15.99€</span>
-                <span class="stock" id="stock-info">Quedan 5 unidades</span>
-            </div>
+            <section class="product-info">
+                <p class="edition">Edición Limitada de Realidad Aumentada</p>
+                <h1>Freddy Fazbear Funko Pop</h1>
+                
+                <p class="description">
+                    Lleva el terror de Five Nights at Freddy's a una nueva dimensión. 
+                    Esta figura no es solo un coleccionable; es la llave para una 
+                    experiencia interactiva única desarrollada en Unity.
+                </p>
 
-            <button id="buy-button" class="btn">Comprar Ahora</button>
-            <p id="message" class="hidden"></p>
+                <div class="ar-cta">
+                    <button class="btn btn-ar"><i class="fas fa-cube"></i> Ver en mi espacio</button>
+                    <p class="ar-note">Escanea el marcador físico tras la compra.</p>
+                </div>
+                
+                <div class="specs-box">
+                    <h3>Detalles Técnicos:</h3>
+                    <ul>
+                        <li><i class="fas fa-microchip"></i> Compatible con AR Foundation</li>
+                        <li><i class="fas fa-shield-alt"></i> Material: Vinilo premium reforzado</li>
+                        <li><i class="fas fa-ruler-combined"></i> Altura: 10cm (Escala real 1:1)</li>
+                    </ul>
+                </div>
+
+                <div class="price-section">
+                    <div class="price-display">
+                        <span class="price">15.99€</span>
+                        <span class="tax-info">PVP. Incluye 21% IVA (2.77€)</span>
+                    </div>
+                    <span class="stock" id="stock-info">Quedan 5 unidades</span>
+                </div>
+
+                <button id="buy-button" class="btn btn-main">Comprar Ahora</button>
+                <p id="message" class="hidden"></p>
+            </section>
+        </article>
+
+        <section class="testimonials">
+            <h2>Opiniones de coleccionistas</h2>
+            <div class="testimonial-card">
+                <p>"La mejor integración de AR que he visto en un Funko. El modelo de Unity es idéntico."</p>
+                <span>- @FazbearFanatic</span>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 - Proyecto Realizado por Alberto - Desarrollo de Apps AR</p>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <a href="#">Aviso Legal</a>
+                <a href="#">Privacidad</a>
+            </div>
+            <div class="footer-section">
+                <h4>Redes</h4>
+                <div class="social-icons">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-facebook"></i>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p>soporte@freddyar.com</p>
+            </div>
+        </div>
+        <p class="copy">&copy; 2026 - Proyecto Alberto - DAM</p>
     </footer>
 
     <script src="script.js"></script>
