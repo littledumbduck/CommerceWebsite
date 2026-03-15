@@ -1,172 +1,112 @@
-/* --- CONFIGURACIÓN BASE --- */
+/* --- CONFIGURACIÓN PARA IMAGEN DE ESCENA (ESTANTERÍA) --- */
 :root {
     --primary: #7d4b2d;
     --accent: #ff9f43;
     --bg: #121212;
-    --card-bg: #1e1e1e;
     --text: #ffffff;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: var(--bg);
     color: var(--text);
     margin: 0;
-    line-height: 1.6;
 }
 
-/* --- HEADER --- */
-header {
-    background: #000;
-    padding: 1rem;
-    text-align: center;
-    border-bottom: 2px solid var(--primary);
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.logo span {
-    color: var(--accent);
-}
-
-/* --- CONTENEDOR PRINCIPAL (MOBILE FIRST) --- */
+/* --- CONTENEDOR PRINCIPAL --- */
 .product-container {
     display: flex;
-    flex-direction: column; /* Apilado en móvil */
-    align-items: center;
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
-    gap: 2rem;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* --- SECCIÓN IMAGEN --- */
+/* --- SECCIÓN DE IMAGEN (Móvil) --- */
 .product-image {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    height: 60vh; /* La imagen ocupa el 60% de la pantalla en el móvil */
+    position: relative;
+    overflow: hidden;
 }
 
 .image-placeholder {
     width: 100%;
-    max-width: 450px;
-    background: #252525;
-    border-radius: 20px;
-    overflow: hidden; /* Corta las esquinas de la imagen si sobresale */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    border: 1px solid #333;
+    height: 100%;
 }
 
 .main-funko {
     width: 100%;
-    display: block;
-    transition: transform 0.5s ease;
+    height: 100%;
+    object-fit: cover; /* Esto evita que la imagen se estire o se rompa */
+    object-position: center;
 }
 
-/* --- INFORMACIÓN --- */
-.product-info {
+/* Degradado para que el texto se lea bien sobre la foto */
+.product-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, var(--bg), transparent);
+}
+
+/* --- INFORMACIÓN DEL PRODUCTO --- */
+.product-info {
+    padding: 2rem 1.5rem;
     text-align: center;
+    background-color: var(--bg);
+    z-index: 10;
+    margin-top: -20px; /* Sube un poco el texto sobre la imagen */
+    border-radius: 20px 20px 0 0;
 }
 
-h1 {
-    font-size: 2.2rem;
-    margin: 0.5rem 0;
-    color: var(--text);
-}
+h1 { font-size: 1.8rem; margin: 0; }
+.edition { color: var(--accent); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; }
+.description { color: #ccc; font-size: 0.9rem; margin: 1rem 0; }
 
-.edition {
-    color: var(--accent);
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.description {
-    color: #bbb;
-    font-size: 1rem;
-    margin: 1.5rem 0;
-}
-
-/* --- PRECIO Y STOCK --- */
 .price-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    gap: 1rem;
+    margin: 1.5rem 0;
 }
 
-.price {
-    font-size: 2.5rem;
-    font-weight: 800;
-}
+.price { font-size: 2rem; font-weight: bold; }
+.stock { background: #c0392b; padding: 4px 10px; border-radius: 15px; font-size: 0.7rem; }
 
-.stock {
-    background: #c0392b;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
-
-/* --- BOTÓN --- */
 .btn {
     width: 100%;
-    max-width: 300px;
     background: var(--primary);
     color: white;
-    padding: 1.2rem;
+    padding: 1rem;
     border: none;
     border-radius: 50px;
+    font-weight: bold;
     font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(125, 75, 45, 0.4);
 }
 
-.btn:hover {
-    background: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 159, 67, 0.4);
-}
-
-/* --- MEDIA QUERY (PC) --- */
+/* --- AJUSTE PARA PC (Pantallas grandes) --- */
 @media (min-width: 850px) {
     .product-container {
-        flex-direction: row; /* Uno al lado de otro en PC */
-        text-align: left;
-        margin-top: 5rem;
+        flex-direction: row;
+        height: 100vh;
+        align-items: center;
+    }
+
+    .product-image {
+        width: 50%;
+        height: 100vh;
     }
 
     .product-info {
+        width: 50%;
         text-align: left;
+        margin-top: 0;
+        padding: 4rem;
     }
 
-    .price-box {
-        justify-content: flex-start;
-    }
-
-    .btn {
-        max-width: 100%;
-    }
+    .price-box { justify-content: flex-start; }
+    .btn { max-width: 300px; }
 }
-
-footer {
-    text-align: center;
-    padding: 2rem;
-    color: #666;
-    font-size: 0.8rem;
-}
-
-.hidden { display: none; }
