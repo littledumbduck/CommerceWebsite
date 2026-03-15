@@ -1,125 +1,172 @@
-/* Configuración General */
+/* --- CONFIGURACIÓN BASE --- */
 :root {
-    --primary-color: #7d4b2d; /* Marrón Freddy */
-    --accent-color: #ff9f43;
-    --bg-color: #1a1a1a;
-    --text-color: #ffffff;
+    --primary: #7d4b2d;
+    --accent: #ff9f43;
+    --bg: #121212;
+    --card-bg: #1e1e1e;
+    --text: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    line-height: 1.6;
 }
 
+/* --- HEADER --- */
 header {
-    padding: 20px 50px;
     background: #000;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 2px solid var(--primary);
 }
 
 .logo {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 800;
+    letter-spacing: 2px;
 }
 
 .logo span {
-    color: var(--accent-color);
+    color: var(--accent);
 }
 
-/* Contenedor de Producto */
+/* --- CONTENEDOR PRINCIPAL (MOBILE FIRST) --- */
 .product-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column; /* Apilado en móvil */
     align-items: center;
-    padding: 50px;
-    gap: 40px;
-    flex: 1;
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    gap: 2rem;
 }
 
-/* Espacio para la Imagen */
-.product-image .image-placeholder {
-    width: 350px;
-    height: 450px;
-    background: #2d2d2d;
-    border: 3px dashed var(--accent-color);
+/* --- SECCIÓN IMAGEN --- */
+.product-image {
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    transition: transform 0.3s;
 }
 
-.product-image .image-placeholder:hover {
-    transform: scale(1.05);
+.image-placeholder {
+    width: 100%;
+    max-width: 450px;
+    background: #252525;
+    border-radius: 20px;
+    overflow: hidden; /* Corta las esquinas de la imagen si sobresale */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    border: 1px solid #333;
 }
 
-/* Información */
+.main-funko {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* --- INFORMACIÓN --- */
 .product-info {
-    max-width: 500px;
+    width: 100%;
+    text-align: center;
 }
 
 h1 {
-    font-size: 3rem;
-    margin-bottom: 0;
+    font-size: 2.2rem;
+    margin: 0.5rem 0;
+    color: var(--text);
 }
 
 .edition {
-    color: var(--accent-color);
-    font-weight: bold;
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
+.description {
+    color: #bbb;
+    font-size: 1rem;
+    margin: 1.5rem 0;
+}
+
+/* --- PRECIO Y STOCK --- */
 .price-box {
-    margin: 20px 0;
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .price {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 2.5rem;
+    font-weight: 800;
 }
 
 .stock {
     background: #c0392b;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 4px 12px;
+    border-radius: 20px;
     font-size: 0.8rem;
+    font-weight: bold;
 }
 
-/* Botón */
+/* --- BOTÓN --- */
 .btn {
-    background-color: var(--primary-color);
+    width: 100%;
+    max-width: 300px;
+    background: var(--primary);
     color: white;
-    padding: 15px 40px;
+    padding: 1.2rem;
     border: none;
-    border-radius: 30px;
-    font-size: 1.2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(125, 75, 45, 0.4);
 }
 
 .btn:hover {
-    background-color: #a05d39;
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 159, 67, 0.4);
 }
 
-.hidden { display: none; }
+/* --- MEDIA QUERY (PC) --- */
+@media (min-width: 850px) {
+    .product-container {
+        flex-direction: row; /* Uno al lado de otro en PC */
+        text-align: left;
+        margin-top: 5rem;
+    }
 
-#message {
-    margin-top: 15px;
-    color: #2ecc71;
-    font-weight: bold;
+    .product-info {
+        text-align: left;
+    }
+
+    .price-box {
+        justify-content: flex-start;
+    }
+
+    .btn {
+        max-width: 100%;
+    }
 }
 
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 2rem;
+    color: #666;
     font-size: 0.8rem;
-    background: #000;
 }
+
+.hidden { display: none; }
