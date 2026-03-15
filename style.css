@@ -1,112 +1,126 @@
-/* --- CONFIGURACIÓN PARA IMAGEN DE ESCENA (ESTANTERÍA) --- */
+/* --- CONFIGURACIÓN BASE --- */
 :root {
     --primary: #7d4b2d;
     --accent: #ff9f43;
-    --bg: #121212;
+    --bg-body: #0c0c0c; /* Fondo casi negro de la página */
+    --bg-card: #141414; /* Fondo de la tarjeta, un poco más claro */
     --text: #ffffff;
 }
 
+* { box-sizing: border-box; }
+
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
+    background-color: var(--bg-body);
     color: var(--text);
     margin: 0;
-}
-
-/* --- CONTENEDOR PRINCIPAL --- */
-.product-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     min-height: 100vh;
 }
 
-/* --- SECCIÓN DE IMAGEN (Móvil) --- */
+/* --- HEADER --- */
+header {
+    width: 100%;
+    background: #000;
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.logo span { color: var(--accent); }
+
+/* --- CONTENEDOR DE LA TARJETA --- */
+.product-container {
+    display: flex;
+    flex-direction: column; /* Apilado en móvil */
+    background-color: var(--bg-card);
+    max-width: 950px;
+    margin: 4rem 1rem;
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+/* --- SECCIÓN IMAGEN --- */
 .product-image {
     width: 100%;
-    height: 60vh; /* La imagen ocupa el 60% de la pantalla en el móvil */
-    position: relative;
-    overflow: hidden;
+    max-width: 400px;
 }
 
 .image-placeholder {
     width: 100%;
-    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .main-funko {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Esto evita que la imagen se estire o se rompa */
-    object-position: center;
+    height: auto;
+    display: block;
 }
 
-/* Degradado para que el texto se lea bien sobre la foto */
-.product-image::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to top, var(--bg), transparent);
-}
-
-/* --- INFORMACIÓN DEL PRODUCTO --- */
+/* --- INFORMACIÓN --- */
 .product-info {
-    padding: 2rem 1.5rem;
     text-align: center;
-    background-color: var(--bg);
-    z-index: 10;
-    margin-top: -20px; /* Sube un poco el texto sobre la imagen */
-    border-radius: 20px 20px 0 0;
+    max-width: 500px;
 }
 
-h1 { font-size: 1.8rem; margin: 0; }
-.edition { color: var(--accent); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; }
-.description { color: #ccc; font-size: 0.9rem; margin: 1rem 0; }
+h1 { font-size: 2.2rem; margin: 0 0 0.5rem 0; font-weight: 800; }
+.edition { color: var(--accent); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+.description { color: #aaa; font-size: 0.95rem; margin: 1.5rem 0; line-height: 1.6; }
 
 .price-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
-.price { font-size: 2rem; font-weight: bold; }
-.stock { background: #c0392b; padding: 4px 10px; border-radius: 15px; font-size: 0.7rem; }
+.price { font-size: 2.5rem; font-weight: 900; }
+.stock { background: #c0392b; padding: 6px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; }
 
+/* --- BOTÓN --- */
 .btn {
     width: 100%;
     background: var(--primary);
     color: white;
-    padding: 1rem;
+    padding: 1.2rem;
     border: none;
     border-radius: 50px;
     font-weight: bold;
     font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
-/* --- AJUSTE PARA PC (Pantallas grandes) --- */
-@media (min-width: 850px) {
+.btn:hover { background: #633a22; transform: scale(1.02); }
+
+/* --- DISEÑO DESKTOP (PC) --- */
+@media (min-width: 800px) {
     .product-container {
-        flex-direction: row;
-        height: 100vh;
-        align-items: center;
-    }
-
-    .product-image {
-        width: 50%;
-        height: 100vh;
-    }
-
-    .product-info {
-        width: 50%;
+        flex-direction: row; /* Uno al lado de otro */
         text-align: left;
-        margin-top: 0;
-        padding: 4rem;
+        padding: 3.5rem;
     }
 
+    .product-info { text-align: left; }
     .price-box { justify-content: flex-start; }
-    .btn { max-width: 300px; }
+    .btn { max-width: 320px; }
 }
+
+footer { margin-top: auto; padding: 2rem; color: #444; font-size: 0.7rem; }
+.hidden { display: none; }
